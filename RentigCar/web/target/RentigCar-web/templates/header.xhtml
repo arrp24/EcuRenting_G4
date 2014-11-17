@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:composition>
+		<style>
+		
+			.ui-clock{
+				 position:absolute;
+				 top:3px;
+				 right:0;
+				 font-size:11px;
+			 }
+	       .panelMenu{
+	       		position:absolute;
+	       		padding: 0 !important;
+	       		font-size: 10px;
+	       		right:0;
+	       		top:29px;
+	       		text-align:right;
+	       }	
+	       		 
+		</style>
+		<div class="panelMenu ui-panel ui-widget ui-corner-all">
+			<div class="ui-panel-titlebar ui-widget-header ui-helper-clearfix ui-corner-all">
+				<span class="ui-panel-title">
+					<label style="float:right;"> ecuRenting </label>
+				</span>
+			</div>
+		</div>		
+		<div class="encabezado">
+			<div >
+				
+				<img src="#{facesContext.externalContext.requestContextPath}/resource/carro.jpg"/>
+					
+				
+				<div style="float:left; width:700px; text-align:right;">
+					<img src="#{facesContext.externalContext.requestContextPath}/resource/images/encabezado.jpg" />
+				</div>
+				<div style="float:left; width:190px;">
+					<p:clock autoSync="true" pattern="HH:mm:ss dd/MM/yyyy"/>
+				</div>
+			</div>
+		</div>
+	</ui:composition>
+</h:body>
+</html>

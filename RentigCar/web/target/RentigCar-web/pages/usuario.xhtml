@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+	   	<h:form id = "usuarioForm">
+	   	
+	   		<p:layout style="min-width:400px;min-height:500px;">
+			    <p:layoutUnit position="west" resizable="true" size="350" minSize="40" maxSize="400">
+			        
+			        <f:facet name="header">
+			            <p:outputPanel>
+			                <h:outputText value="Busqueda Usuarios" />			                
+			            </p:outputPanel>
+			        </f:facet>
+			        
+			        <h:panelGrid   columns="2" cellpadding="2" style="margin:0 auto;" >
+				        <h:outputText value="Cedula" />
+				        <p:inputText value="#{usuarioBean.usuarioBus.usrCedula}" />
+				        <h:outputText value="Nombre" />
+				        <p:inputText value="#{usuarioBean.usuarioBus.usrNombre}" />
+				    
+				    	<p:commandButton value="Buscar" actionListener="#{usuarioBean.buscar()}"/>
+				        <p:commandButton value="Limpiar" actionListener="#{usuarioBean.limpiar()}"/>
+				        
+				    </h:panelGrid>
+				    
+			    </p:layoutUnit>
+			 
+			    <p:layoutUnit position="center">
+			    
+			    	
+			       <p:dataTable id="tablaUsuario" var="user" value="#{usuarioBean.usuarioLista}">
+			       
+			       		<f:facet name="header">
+				            <p:outputPanel>
+				                 <p:commandButton value="Nuevo" type="button" icon="ui-icon-circle-plus" onclick="PF('dlg2').show();" />  
+				            </p:outputPanel>
+				        </f:facet>
+ 
+					    <p:column headerText="Cedula">
+					        <h:outputText value="#{user.usrCedula}" />
+					    </p:column>
+					 
+					    <p:column headerText="Nombre">
+					        <h:outputText value="#{user.usrNombre}" />
+					    </p:column>
+					 
+					    <p:column headerText="Apellido">
+					        <h:outputText value="#{user.usrApellido}" />
+					    </p:column>
+					 
+					    <p:column headerText="Fecha Nacimiento">
+					        <h:outputText value="#{user.usrFchNac}" />
+					    </p:column>
+					    
+					    <p:column headerText="Telefono">
+					        <h:outputText value="#{user.usrFchNac}" />
+					    </p:column>
+					    
+					    <p:column headerText="T. Licencia">
+					        <h:outputText value="#{user.usrTipLicencia}" />
+					    </p:column>
+					    
+					    <p:column headerText="Editar">
+					    	<center>
+					    		<p:commandButton icon="ui-icon-pencil" actionListener="#{usuarioBean.editar(user)}"  />
+					    		<p:commandButton icon="ui-icon-circle-close" actionListener="#{usuarioBean.eliminar(user)}"/>
+					    	</center>
+					    </p:column> 
+					</p:dataTable>
+					
+					<p:dialog id="ed" header="Ingresar Usuario" widgetVar="dlg2"  height="300">
+					    <h:panelGrid  columns="2" cellpadding="2" style="margin:0 auto;" >
+					
+							<h:outputText value="Cedula" />
+							<p:inputText value="#{usuarioBean.usuario.usrCedula}" />
+							<h:outputText value="Nombre" />
+							<p:inputText value="#{usuarioBean.usuario.usrNombre}" />
+							<h:outputText value="Apellido" />
+							<p:inputText value="#{usuarioBean.usuario.usrApellido}" />
+							<h:outputText value="Fecha Nacimiento" />
+							<p:calendar timeZone="#{timeZone.zone}" value="#{usuarioBean.usuario.usrFchNac}" locale="es" id="calendarDate1ToSearch" pattern="yyyy-MM-dd"  />
+							<h:outputText value="Telefono" />
+							<p:inputText value="#{usuarioBean.usuario.usrTelefono}" />
+							<h:outputText value="Tipo Licencia" />
+							<p:inputText value="#{usuarioBean.usuario.usrTipLicencia}" />
+							
+					        <center>
+					        	<p:commandButton value="Guardar" actionListener="#{usuarioBean.guardar()}"/>
+					        </center>
+						</h:panelGrid>
+					</p:dialog>   
+ 
+					   
+					   
+					 
+ 
+
+
+			    </p:layoutUnit>
+			</p:layout>
+			
+		</h:form>
+	</ui:define>	
+</ui:composition>
+</html>	

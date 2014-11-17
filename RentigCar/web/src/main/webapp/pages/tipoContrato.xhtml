@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+	   	<h:form id = "tipoContratoForm">
+			<h:panelGrid   columns="2" cellpadding="2" style="margin:0 auto;" >
+					<h:outputText value="Fecha Final" />
+					<p:calendar timeZone="#{timeZone.zone}" value="#{tipoContratoBean.tipoContrato.tipDiaFinal}" locale="es" id="calendarDate1ToSearch" pattern="yyyy-MM-dd"  />
+					<h:outputText value="Fecha Inicial" />
+					<p:calendar timeZone="#{timeZone.zone}" value="#{tipoContratoBean.tipoContrato.tipDiaInicio}" locale="es" id="calendarDateToSearch" pattern="yyyy-MM-dd"  />
+					
+			        <center>
+			        	<p:commandButton value="Guardar" actionListener="#{tipoContratoBean.guardar()}"/>
+			        </center>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>	
+</ui:composition>
+</html>	

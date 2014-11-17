@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+<ui:composition>
+<h:form> 
+	    <style>  
+	       ul.ui-menu-child{
+	            width: 240px !important;
+	        }
+	        .column1ClassMenu{text-align:right;}
+	        
+	       
+		</style>
+		
+		<p:menubar >
+   			
+   			<p:submenu label="Inicio" url="/pages/index.xhtml"   >
+			</p:submenu>
+            <p:submenu label="Vehículos" >
+                <p:menuitem value="Administrar Vehiculos" url="/pages/vehiculo.xhtml"  />
+                	         
+            	<p:submenu label="Alquiler Vehiculos" >
+					<p:menuitem value="Tipo Contrato" url="/pages/tipoContrato.xhtml"  />
+				</p:submenu>			
+			</p:submenu>   
+			<p:submenu label="Monitoreo Vehículo"  >
+				
+				
+				<p:submenu label="Usuario" >
+					<p:menuitem value="Administrar Usuario" url="/pages/usuario.xhtml" />
+					<p:menuitem value="Consulta Usuario" url="/pages/consultaUsuario.xhtml"  />
+				</p:submenu>
+				
+							
+			</p:submenu>           
+			<p:submenu label="Cliente" >
+				<p:menuitem value="Administrar Cliente" url="/pages/cliente.xhtml" />
+							
+			</p:submenu>   
+			
+			<p:submenu label="Salir" >
+											
+			</p:submenu>   
+			
+			<p:submenu label="Help" >
+											
+			</p:submenu>
+			
+		</p:menubar>
+	</h:form>
+</ui:composition>
+</h:body>
+</html> 

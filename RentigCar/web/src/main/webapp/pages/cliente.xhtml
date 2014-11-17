@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/template.xhtml">
+	
+	<ui:define name="content">
+	   	<h:form id = "clienteForm">
+	   	
+	   		<p:layout style="min-width:400px;min-height:500px;">
+			    <p:layoutUnit position="west" resizable="true" size="350" minSize="40" maxSize="400">
+			        
+			        <f:facet name="header">
+			            <p:outputPanel>
+			                <h:outputText value="Busqueda clientes" />			                
+			            </p:outputPanel>
+			        </f:facet>
+			        
+			        <h:panelGrid   columns="2" cellpadding="2" style="margin:0 auto;" >
+				        <h:outputText value="Cedula" />
+				        <p:inputText value="#{clienteBean.clienteBus.cliCedula}" />
+				        <h:outputText value="Nombre" />
+				        <p:inputText value="#{clienteBean.clienteBus.cliNombre}" />
+				    
+				    	<p:commandButton value="Buscar" actionListener="#{clienteBean.buscar()}"/>
+				        <p:commandButton value="Limpiar" actionListener="#{clienteBean.limpiar()}"/>
+				        
+				    </h:panelGrid>
+				    
+			    </p:layoutUnit>
+			 
+			    <p:layoutUnit position="center">
+			    
+			    	
+			       <p:dataTable id="tabla" var="client" value="#{clienteBean.clienteLista}">
+			       
+			       		<f:facet name="header">
+				            <p:outputPanel>
+				                 <p:commandButton value="Nuevo" type="button" icon="ui-icon-circle-plus" onclick="PF('dlg2').show();" />  
+				            </p:outputPanel>
+				        </f:facet>
+ 
+					    <p:column headerText="Cedula">
+					        <h:outputText value="#{client.cliCedula}" />
+					    </p:column>
+					 
+					    <p:column headerText="Nombre">
+					        <h:outputText value="#{client.cliNombre}" />
+					    </p:column>
+					 
+					    <p:column headerText="Apellido">
+					        <h:outputText value="#{client.cliApellido}" />
+					    </p:column>
+					 
+					    <p:column headerText="Fecha Nacimiento">
+					        <h:outputText value="#{client.cliFecha}" />
+					    </p:column>
+					    
+					    <p:column headerText="Telefono">
+					        <h:outputText value="#{client.cliTelefono}" />
+					    </p:column>
+					    
+					    <p:column headerText="Email">
+					        <h:outputText value="#{client.cliEmail}" />
+					    </p:column>
+					    
+					    <p:column headerText="Empresa">
+					        <h:outputText value="#{client.cliEmpresa}" />
+					    </p:column>
+					    
+					    <p:column headerText="Editar">
+					    	<center>
+					    		<p:commandButton icon="ui-icon-pencil" actionListener="#{clienteBean.editar(client)}"  />
+					    		<p:commandButton icon="ui-icon-circle-close" actionListener="#{clienteBean.eliminar(client)}"/>
+					    	</center>
+					    </p:column> 
+					</p:dataTable>
+					
+					<p:dialog id="edd" header="Ingresar cliente" widgetVar="dlg2"  height="320">
+					    <h:panelGrid  columns="2" cellpadding="2" style="margin:0 auto;" >
+					
+							<h:outputText value="Cedula" />
+							<p:inputText value="#{clienteBean.cliente.cliCedula}" />
+							<h:outputText value="Nombre" />
+							<p:inputText value="#{clienteBean.cliente.cliNombre}" />
+							<h:outputText value="Apellido" />
+							<p:inputText value="#{clienteBean.cliente.cliApellido}" />
+							<h:outputText value="Fecha Nacimiento" />
+							<p:calendar timeZone="#{timeZone.zone}" value="#{clienteBean.cliente.cliFecha}" locale="es" id="calendarDate1ToSearch" pattern="yyyy-MM-dd"  />
+							<h:outputText value="Telefono" />
+							<p:inputText value="#{clienteBean.cliente.cliTelefono}" />
+							<h:outputText value="Email" />
+							<p:inputText value="#{clienteBean.cliente.cliEmail}" />
+							<h:outputText value="Empresa" />
+							<p:inputText value="#{clienteBean.cliente.cliEmpresa}" />
+							
+					        <center>
+					        	<p:commandButton value="Guardar" actionListener="#{clienteBean.guardar()}"/>
+					        </center>
+						</h:panelGrid>
+					</p:dialog>   
+
+			    </p:layoutUnit>
+			</p:layout>
+			
+		</h:form>
+	</ui:define>	
+</ui:composition>
+</html>	
